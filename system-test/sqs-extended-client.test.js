@@ -3,8 +3,6 @@ const uuid = require('uuid/v4');
 
 const ExtendedSqsClient = require('../src/ExtendedSqsClient');
 
-console.log(process.env);
-
 const sqsEndpoint = process.env.SQS_ENDPOINT || 'http://localstack:4566';
 const sqs = new AWS.SQS({
     apiVersion: '2012-11-05',
@@ -19,6 +17,8 @@ const s3 = new AWS.S3({
     region: 'eu-west-2',
     s3ForcePathStyle: true,
 });
+
+console.log(s3Endpoint, sqsEndpoint);
 
 jest.setTimeout(30000);
 

@@ -6,8 +6,8 @@
     "license": "MIT",
     "main": "src/ExtendedSqsClient",
     "scripts": {
-        "test": "jest 'src/.*'",
-        "system-test": "jest 'system-test/.*'"
+        "test": "jest --testPathPattern='src/.*'",
+        "system-test": "jest --testPathPattern='system-test/.*'"
     },
     "dependencies": {
         "uuid": "^3.4.0"
