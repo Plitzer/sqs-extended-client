@@ -18,8 +18,6 @@ const s3 = new AWS.S3({
     s3ForcePathStyle: true,
 });
 
-console.log(s3Endpoint, sqsEndpoint);
-
 jest.setTimeout(30000);
 
 let queueUrl;
@@ -49,18 +47,12 @@ describe('sqs-extended-client', () => {
         const sqsExtendedClient = new ExtendedSqsClient(sqs, s3);
 
         // When
-        console.log('XXXXXXXXXXX');
-
-        const request = sqsExtendedClientSend
+        await sqsExtendedClientSend
             .sendMessage({
                 QueueUrl: queueUrl,
                 MessageBody: 'small body',
             })
-        console.log(request.httpRequest);
-        await request.promise();
-
-        console.log('XXXXXXXXXXX');
-
+            .promise();
 
         const { Messages: messages } = await sqsExtendedClient
             .receiveMessage({
