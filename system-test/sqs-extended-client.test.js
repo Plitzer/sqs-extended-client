@@ -6,14 +6,14 @@ const ExtendedSqsClient = require('../src/ExtendedSqsClient');
 const sqsEndpoint = process.env.SQS_ENDPOINT || 'http://localstack:4566';
 const sqs = new AWS.SQS({
     apiVersion: '2012-11-05',
-    endpoint: sqsEndpoint,
+    // endpoint: sqsEndpoint,
     region: 'eu-west-2',
 });
 
 const s3Endpoint = process.env.S3_ENDPOINT || 'http://localstack:4566';
 const s3 = new AWS.S3({
     apiVersion: '2006-03-01',
-    endpoint: s3Endpoint,
+    // endpoint: s3Endpoint,
     region: 'eu-west-2',
     s3ForcePathStyle: true,
 });
@@ -50,7 +50,7 @@ describe('sqs-extended-client', () => {
 
         // When
         console.log('XXXXXXXXXXX');
-        
+
         const request = sqsExtendedClientSend
             .sendMessage({
                 QueueUrl: queueUrl,
