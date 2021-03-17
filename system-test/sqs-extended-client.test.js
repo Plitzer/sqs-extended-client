@@ -49,12 +49,18 @@ describe('sqs-extended-client', () => {
         const sqsExtendedClient = new ExtendedSqsClient(sqs, s3);
 
         // When
-        await sqsExtendedClientSend
+        console.log('XXXXXXXXXXX');
+        
+        const request = sqsExtendedClientSend
             .sendMessage({
                 QueueUrl: queueUrl,
                 MessageBody: 'small body',
             })
-            .promise();
+        console.log(request.httpRequest);
+        await request.promise();
+
+        console.log('XXXXXXXXXXX');
+
 
         const { Messages: messages } = await sqsExtendedClient
             .receiveMessage({
